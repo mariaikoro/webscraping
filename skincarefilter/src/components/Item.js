@@ -15,8 +15,11 @@ class Item extends React.Component {
     render() {
         if(this.state.loading){
             return (
-                <div style = {{ border: "blue 3px solid" }}>
-                    loading
+                <div class = "ui segment" style = {{ border: "blue 3px solid" }}>
+                        <div class="ui active inverted dimmer">
+                            <div class="ui text loader">Loading</div>
+                        </div>
+                        <p>Loading</p>
                 </div>
                 )
         }else {

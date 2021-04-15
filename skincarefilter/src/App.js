@@ -38,16 +38,6 @@ class App extends React.Component {
 
     }
 
-    componentDidMount() {
-        let arr = this.state.items;
-        arr.forEach((item) => {
-            item.brandID = this.getBrandName(item.brandID);
-            console.log(item.brandID)
-
-        })
-        this.setState({items: arr})
-    }
-
     render() {
         return (
             <div className = "ui container" style = {{ marginTop: '10px'}}>
