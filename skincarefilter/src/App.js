@@ -16,7 +16,7 @@ class App extends React.Component {
         const ingredientsRef = db.collection('ingredients');
         var snapshot = await ingredientsRef.where('name', '==', term).get();
         if (snapshot.empty) {
-        console.log('No matching documents.');
+        this.setState({items: []})
         return;
         }  
 
@@ -25,10 +25,6 @@ class App extends React.Component {
 
         const itemsRef = db.collection('items');
         snapshot = await itemsRef.where("ingredients",'array-contains',id).get();
-        if (snapshot.empty) {
-            console.log('No matching documents.');
-            return;
-            }
 
         let arr = snapshot.docs.map((doc) => {
             return doc = doc.data();
@@ -41,6 +37,7 @@ class App extends React.Component {
     render() {
         return (
             <div className = "ui container" style = {{ marginTop: '10px'}}>
+                <h1>Skincare Filter</h1>
                 <SearchBar onSubmit = {this.onSearchSubmit} />
                 Found {this.state.items.length} items
                 <ItemList items = {this.state.items} />

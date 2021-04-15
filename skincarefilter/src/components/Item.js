@@ -9,22 +9,22 @@ class Item extends React.Component {
     // need to format ingredients using props
     async componentDidMount() {
         const brandRef = db.collection('brands');
-        var snapshot = await brandRef.doc(this.props.brandName).get();
+        const snapshot = await brandRef.doc(this.props.brandName).get();
         this.setState({loading: false, brand: snapshot.data().name});
     }
     render() {
         if(this.state.loading){
             return (
-                <div class = "ui segment" style = {{ border: "blue 3px solid" }}>
-                        <div class="ui active inverted dimmer">
-                            <div class="ui text loader">Loading</div>
+                <div className = "ui segment" style = {{ border: "blue 3px solid" }}>
+                        <div className ="ui active inverted dimmer">
+                            <div className ="ui text loader">Loading</div>
                         </div>
                         <p>Loading</p>
                 </div>
                 )
         }else {
         return(
-            <div style = {{ border: "blue 3px solid" }}>
+            <div className = "ui segment" style = {{ border: "blue 3px solid" }}>
                 <h1>{this.props.itemName}</h1>
                 <h2>{this.state.brand}</h2>
             </div>
